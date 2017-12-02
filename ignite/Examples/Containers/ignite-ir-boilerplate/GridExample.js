@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, ListView } from 'react-native'
 import { connect } from 'react-redux'
-
 // For empty lists
 // import AlertMessage from '../Components/AlertMessage'
 
@@ -10,6 +9,9 @@ import styles from './Styles/GridExampleStyle'
 
 class GridExample extends Component {
   constructor (props) {
+
+
+
     super(props)
     // If you need scroll to bottom, consider http://bit.ly/2bMQ2BZ
 

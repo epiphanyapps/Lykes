@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native'
+import { ScrollView, Text, Image, View, TouchableOpacity, Linking } from 'react-native'
 import { Images } from './DevTheme'
 import ButtonBox from './ButtonBox'
 import { StackNavigator } from 'react-navigation'
@@ -13,6 +13,8 @@ import FaqScreen from './FaqScreen'
 
 // Styles
 import styles from './Styles/PresentationScreenStyles'
+import TumblrManager from '../../App/Services/TumblrAPI'
+
 
 class PresentationScreen extends React.Component {
   openComponents = () => {
@@ -35,11 +37,37 @@ class PresentationScreen extends React.Component {
     this.props.navigation.navigate('DeviceInfoScreen')
   }
 
+  openLykes = () => {
+    this.props.navigation.navigate('LykesScreen')
+  }
+
   openFaq = () => {
     this.props.navigation.navigate('FaqScreen')
   }
 
+  tumblrConnect = () => {
+    this.props.navigation.navigate('FaqScreen')    
+
+  }
+
+  componentDidMount() {
+    console.log("DIDMOUNTTTTT")
+     var tumblr = TumblrManager()
+     tumblr._updateUserInfo()
+
+
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        console.log('Initial url is: ' + url);
+      }
+    }).catch(err => console.error('An error occurred', err));
+  
+
+
+  }
+
   render () {
+    
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
@@ -69,10 +97,13 @@ class PresentationScreen extends React.Component {
             <ButtonBox onPress={this.openTheme} image={Images.theme} text='Theme' />
           </View>
           <View style={styles.buttonsContainer}>
-            <ButtonBox onPress={this.openDevice} style={styles.deviceButton} image={Images.deviceInfo} text='Device Info' />
-            <ButtonBox onPress={this.openFaq} style={styles.usageButton} image={Images.faq} text='FAQ' />
+          <ButtonBox onPress={this.openDevice} style={styles.deviceButton} image={Images.deviceInfo} text='Device Info' />
+          <ButtonBox onPress={this.openFaq} style={styles.usageButton} image={Images.faq} text='FAQ' />
+        </View>
+        <View style={styles.buttonsContainer}>
+            <ButtonBox onPress={this.openDevice} style={styles.deviceButton} image={Images.deviceInfo} text='Likes' />
           </View>
-        </ScrollView>
+      </ScrollView>
         <View style={styles.banner}>
           <Text style={styles.bannerLabel}>Made with ❤️ by Infinite Red</Text>
         </View>

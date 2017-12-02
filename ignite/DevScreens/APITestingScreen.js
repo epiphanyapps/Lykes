@@ -15,6 +15,7 @@ const endpoints = [
   { label: 'Github Root', endpoint: 'getRoot' },
   { label: 'Github Rate Limit', endpoint: 'getRate' },
   { label: 'Search User (gantman)', endpoint: 'getUser', args: ['gantman'] },
+  { label: 'Lykes', endpoint: 'getUser', args: ['lykes'] },
   { label: 'Search User (skellock)', endpoint: 'getUser', args: ['skellock'] }
 ]
 
