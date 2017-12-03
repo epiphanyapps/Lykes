@@ -8,28 +8,31 @@ import { google, facebook, twitter, tumblr } from 'react-native-simple-auth';
 
 // var tumblr = require('tumblr.js');
 
-export class TumblrManager extends React.Component {
+export default class TumblrManager extends React.Component {
 
     constructor (props) {
         super(props)
         console.log("EYOOOOOO")
+
         tumblr({
             appId: '3vCpe1Z4Oe51BvEorrmKBYYygMBrhHywsuvnasB29XAl5AB895',
             appSecret: 'nk6cLUKGIA3Y52xB6kkOVBqpcr3ezdQ5X8NVTsUp9h2rv4dVAb',
-            callback: 'testapp://authorize',
-                    }).then((info) => {
-                        console.log(info)
+            callback: 'lykes://authorize',
+        }).then((info) => {
+            console.log("infoooo")
+            console.log(info)
             // info.user - user details from the provider
             // info.credentials - tokens from the provider
-          }).catch((error) => {
+        }).catch((error) => {
+            console.log("erroooorrr")
             console.log(error)
-            
+
             // error.code
             // error.description
-          });
-          
+        });
+
     }
-    
+
     _updateUserInfo() {
 
             console.log("?????")
