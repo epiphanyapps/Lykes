@@ -95,10 +95,17 @@ export default class TumblrScreen extends React.Component {
 
   getLikes = () => {
     
-    var url = 'https://api.tumblr.com/v2/blog/' + this.state.blogID + '/likes?api_key=' + '3vCpe1Z4Oe51BvEorrmKBYYygMBrhHywsuvnasB29XAl5AB895' //+ '?limit=20'
-
     var date = new Date()
     var timeInt = date.getTime()
+console.log(timeInt)
+    var url = 'https://api.tumblr.com/v2/blog/' + 
+              this.state.blogID + 
+              '/likes?api_key=' + 
+              '3vCpe1Z4Oe51BvEorrmKBYYygMBrhHywsuvnasB29XAl5AB895' + 
+              '&limit=20' + 
+              '&before=' + 
+              timeInt
+
 
     // console.log(date)
     console.log(url)
