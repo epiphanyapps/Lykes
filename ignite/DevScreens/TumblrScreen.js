@@ -94,17 +94,17 @@ export default class TumblrScreen extends React.Component {
   }
 
   getLikes = () => {
-    
+
     var date = new Date()
-    var timeInt = date.getTime()
-console.log(timeInt)
-    var url = 'https://api.tumblr.com/v2/blog/' + 
-              this.state.blogID + 
-              '/likes?api_key=' + 
-              '3vCpe1Z4Oe51BvEorrmKBYYygMBrhHywsuvnasB29XAl5AB895' + 
-              '&limit=20' + 
-              '&before=' + 
-              timeInt
+    // var timeInt = date.getTime()
+    var timeInt = Math.round(date.getTime() / 1000);
+
+    console.log(timeInt)
+    var url = 'https://api.tumblr.com/v2/blog/' + this.state.blogID +
+      '/likes?api_key=' + '3vCpe1Z4Oe51BvEorrmKBYYygMBrhHywsuvnasB29XAl5AB895' +
+      '&offset=21' +
+      '&limit=20' //+
+    // '&before=' + timeInt
 
 
     // console.log(date)
@@ -119,27 +119,27 @@ console.log(timeInt)
         "Authorization": this.state.oauth_token
       }
     })
-    .then(function(response) { return response.json(); })    
-    .then(function(data) {
+      .then(function (response) { return response.json(); })
+      .then(function (data) {
 
-      console.log("data")
-      console.log(data)
+        console.log("data")
+        console.log(data)
 
-      console.log("liked")
-      var likedPosts = data.response.liked_posts
-      console.log(likedPosts)
+        console.log("liked")
+        var likedPosts = data.response.liked_posts
+        console.log(likedPosts)
 
-      console.log("meta")      
-      var meta = data.meta
-      console.log(meta)
+        console.log("meta")
+        var meta = data.meta
+        console.log(meta)
 
-      // console.log("liked")
-      // console.log(Object.keys(data));
-      
-    }).catch(function (error) {
-      console.log(error)
-      console.log("error");
-    });
+        // console.log("liked")
+        // console.log(Object.keys(data));
+
+      }).catch(function (error) {
+        console.log(error)
+        console.log("error");
+      });
 
     this.setState({
       loaded: true,
